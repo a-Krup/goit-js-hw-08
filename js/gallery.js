@@ -90,3 +90,31 @@ galleryLinks.forEach((link) => {
     event.preventDefault();
   });
 });
+
+galleryContainer.addEventListener("click", (event) => {
+  if (event.target.closest(".gallery-link")) {
+    const galleryLink = event.target.closest(".gallery-link");
+
+    const largeImageLink = galleryLink.getAttribute("href");
+
+    console.log(largeImageLink);
+
+    event.preventDefault();
+  }
+});
+
+galleryContainer.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
+
+  const largeImageURL = event.target.dataset.source;
+
+  const instance = basicLightbox.create(`
+    <img src="${largeImageURL}" width="1112" height="640">
+  `);
+
+  instance.show();
+});
