@@ -22,6 +22,7 @@ body {
   margin: 0;
   padding: 24px 156px;
   width: 1440px;
+  position: relative;
 }
 
 .gallery li {
@@ -35,19 +36,22 @@ body {
 }
 
 .basicLightbox .basicLightbox__placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(46, 47, 66, 0.8);
-    position: fixed; 
-    top: 0;
-    left: 0;
-    z-index: 9999; 
-    padding: 28px 164px;
-  }
-  
-  
-  .basicLightbox .basicLightbox__image {
-      object-fit: contain; 
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(46, 47, 66, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 28px 164px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.basicLightbox .basicLightbox__image {
+  max-width: calc(100% - 328px);
+  max-height: calc(100% - 56px);
+  object-fit: contain;
+}
