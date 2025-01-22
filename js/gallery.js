@@ -84,33 +84,15 @@ const galleryMarkup = images
 
 galleryContainer.innerHTML = galleryMarkup;
 
-const galleryLinks = document.querySelectorAll(".gallery-link");
-galleryLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-  });
-});
-
-galleryContainer.addEventListener("click", (event) => {
-  if (event.target.closest(".gallery-link")) {
-    const galleryLink = event.target.closest(".gallery-link");
-
-    const largeImageLink = galleryLink.getAttribute("href");
-
-    console.log(largeImageLink);
-
-    event.preventDefault();
-  }
-});
-
 galleryContainer.addEventListener("click", (event) => {
   event.preventDefault();
 
-  if (event.target.nodeName !== "IMG") {
+  const image = event.target.closest(".gallery-image");
+  if (!image) {
     return;
   }
 
-  const largeImageURL = event.target.dataset.source;
+  const largeImageURL = image.dataset.source;
 
   const instance = basicLightbox.create(`
     <img src="${largeImageURL}" width="1112" height="640">
